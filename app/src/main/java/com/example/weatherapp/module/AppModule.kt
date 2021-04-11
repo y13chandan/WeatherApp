@@ -15,7 +15,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getBaseUrl():String = "http://api.weatherstack.com/current"
+    fun getBaseUrl():String = "http://api.weatherstack.com/"
 
     @Provides
     @Singleton
