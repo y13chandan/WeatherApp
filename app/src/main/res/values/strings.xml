@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="pressure">Pressure</string>
+    <string name="precip">Precip</string>
+    <string name="cloud_cover">Cloud Cover</string>
+    <string name="retry">Retry</string>
+    <string name="something_went_wrong_at_our_end">Something went wrong at our end!</string>
 </resources>
