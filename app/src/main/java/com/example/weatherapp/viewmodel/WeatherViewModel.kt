@@ -1,5 +1,6 @@
 package com.example.weatherapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -24,6 +25,7 @@ class WeatherViewModel @Inject constructor(private val weatherRepository: Weathe
             try {
                 val response = weatherRepository.getWeatherData(accessKey, cityName)
                 weatherData.value = Success(response)
+                Log.d("responsevalue", response.toString())
                 progress.value = false
             } catch (e: Exception) {
                 e.message?.let {
