@@ -4,7 +4,8 @@ data class CurrentWeatherDetail(
     val temperature: Double,
     val wind_speed: Double,
     val pressure: Double,
-    val precip: Double
+    val precip: Double,
+    val cloudcover: Double
     ) {
 
 }

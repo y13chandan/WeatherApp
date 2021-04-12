@@ -1,5 +1,6 @@
 package com.example.weatherapp.screen
 
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.error_screen.*
 import kotlinx.android.synthetic.main.weather_details.*
 import kotlin.math.roundToInt
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initDetails()
+    }
+
+
+    private fun initDetails() {
         callWeatherApi()
         showProgressBar()
         observeApiData()
@@ -59,10 +66,13 @@ class MainActivity : AppCompatActivity() {
                 if (response.data is WeatherResponse) {
                     weather_view.visibility = View.VISIBLE
                     error_view.visibility = View.GONE
-                    temperature.text = "${response.data.current?.temperature?.roundToInt()}" + " \u2103"
-                    tv_wind_speed.text = response.data.current?.wind_speed.toString()
-                    tv_pressure.text = response.data.current?.pressure.toString()
-                    tv_precip.text = response.data.current?.precip.toString()
+                    val currentWeatherDetail = response.data.current
+                    location.text = response.data.location?.name
+                    temperature.text = "${currentWeatherDetail?.temperature?.roundToInt()}" + " \u2103"
+                    tv_wind_speed.text = currentWeatherDetail?.wind_speed.toString()
+                    tv_pressure.text = currentWeatherDetail?.pressure.toString()
+                    tv_precip.text = currentWeatherDetail?.precip.toString()
+                    tv_cloud_cover.text = currentWeatherDetail?.cloudcover.toString()
                 }
 
             } else if (response is Failed) {
